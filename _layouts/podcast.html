@@ -1,0 +1,75 @@
+---
+layout: page
+---
+
+<h1 class="text-center py-3 text-5xl" id="page-title">Episode 1: {{page.title}}</h1>
+<div class="description pb-5 mx-auto text-center text-lg opacity-75 max-w-2xl">{{page.description}}</div>
+<div class="podcast-player">
+    {{content}}
+</div>
+
+
+<div class="flex flex-wrap pt-4" style="gap: 1em;">
+  <div class="banner">
+    <img src="" alt="Poster" id="Poster" class="img-fluid object-fit img-responsive">
+  </div>
+  <div class="pl-1">
+    <h2 class="font-heading bold text-3xl font-[oswald]" id="Title">loading...</h2>
+    <ul class="flex list-unstyled my-2 gap-2 flex-wrap opacity-75">
+      <li id="Runtime" class=" px-2 bg-slate-900">loading...</li>
+      <li id="Year" class="px-2 bg-slate-900">loading...</li>
+      <li id="Rated" class="px-2 bg-slate-900">loading...</li>
+      <li id="Genre" class="px-2 bg-slate-900">loading...</li>
+    </ul>
+    <h5 class="py-2"><strong>Plot </strong>-</h5>
+    <p id="Plot" class="opacity-75 max-w-lg">loading...</p>
+    <div class="py-2">
+      <h5><strong>Director -</strong></h5>
+      <div id="Director" class="opacity-75">loading...</div>
+    </div>
+    <div class="pt-2">
+      <h5><strong>Writers -</strong></h5>
+      <div id="Writer" class="opacity-75">loading...</div>
+    <div class="pt-2">
+      <h5><strong>Casts -</strong></h5>
+      <div id="Actors" class="opacity-75">loading...</div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% if site.comments %}
+<!-- {% include disqus.html %} -->
+{% endif %}
+
+
+<script>
+  // fetching movie
+  const getMovieInfo = () => {
+
+    const movieID = '{{ page.movie_id }}';
+    // Change the API key to your own
+    fetch(`https://www.omdbapi.com/?i=${movieID}&plot=full&apikey=2f6435d9`)
+      .then(response => response.json())
+      .then(data => {
+        document.querySelector("#Poster").src = data.Poster
+
+        document.querySelector("#Title").innerText = data.Title
+        document.querySelector("#Director").innerText = data.Director
+        document.querySelector("#Writer").innerText = data.Writer
+        document.querySelector("#Actors").innerText = data.Actors
+
+        document.querySelector("#Plot").innerText = data.Plot
+
+        document.querySelector("#Runtime").innerText = data.Runtime
+        document.querySelector("#Year").innerText = data.Year
+        document.querySelector("#Rated").innerText = data.Rated
+        document.querySelector("#Genre").innerText = data.Genre
+      })
+      .catch(err => console.log(err))
+    }
+  getMovieInfo();
+  console.log(getMovieInfo)
+
+  // /fetching movie
+</script>

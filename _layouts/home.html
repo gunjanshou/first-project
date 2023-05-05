@@ -1,0 +1,73 @@
+---
+layout: default
+---
+
+<section class="home my-0">
+	<div class="p-2 text-center mb-3">
+		<div class="pt-5">
+			<h1 class="text-5xl md:text-7xl tracking-tight" id="page-title">{{site.title}}</h1>
+			<h5 class="my-2 text-lg md:text-2xl opacity-75 max-w-2xl mx-auto">{{site.description}}</h5>
+		</div>
+	</div>
+	<div class="flex flex-col md:flex-row gap-8 flex-wrap w-full py-5">
+		<div class="flex-1 rounded">
+			<h2 class="text-lg text-center bg-slate-700 shadow-inner rounded" id="heading">Recent Posts</h2>
+			<div class="list-group">
+				{% for posts in site.blog limit:3 %}
+				<div class="bg-slate-900 border-b-2 border-gray-500 px-4 py-2 rounded">
+					<a href="{{ posts.url | relative_url }}" class="" aria-current="true">
+						<h2 class="mb-1 pr-2 text-2xl text-blue-300 hover:underline">{{posts.title}}</h2>
+					</a>
+					{% if posts.description %}
+					<p class="mb-1 h-12 opacity-75">{{posts.description | truncate: 90}}</p>
+					{% endif %}
+					{% if posts.tags %}
+					<ul class="list-unstyled flex flex-wrap pt-1 gap-2">
+						{% for tag in posts.tags %}
+						<li>
+							<a href={{ site.baseurl | append: "/blog/tags/" | append: tag | append: "/" }}
+								class="border border-gray-500 px-2 flex gap-1 items-center rounded-full rounded-full opacity-50 hover:opacity-100 hover:bg-slate-500 hover:text-slate-900">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+									stroke="currentColor" class="w-5 h-5">
+									<path stroke-linecap="round" stroke-linejoin="round"
+										d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+									<path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+								</svg>
+								<div>{{tag}}</div>
+							</a>
+						</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+					{% if posts.date-published %}
+					<small class="italic opacity-75">Posted on - {{posts.date-published | date: "%b %d, %Y" }}</small>
+					{% endif %}
+				</div>
+				{% endfor %}
+			</div>
+			<div class="text-center bg-slate-700 shadow-inner w-full"><a href="{{site.url}}/blog/"
+					class="no-underline">View all</a></div>
+		</div>
+		<div class="flex-1 rounded">
+			<h2 class="text-lg text-center bg-slate-700 shadow-inner rounded" id="heading">New Episodes</h2>
+			<div class="list-group">
+				{% for podcast in site.podcasts limit:3 %}
+				<div class="bg-slate-900 px-4 py-2 border-b-2 border-slate-500 rounded">
+					<a href="{{ podcast.url | relative_url }}" class="" aria-current="true">
+						<h2 class="mb-1 pr-2 text-2xl text-blue-300 hover:underline">{{podcast.title}}</h2>
+					</a>
+					{% if podcast.description %}
+					<p class="mb-1 h-18 opacity-75">{{podcast.description | truncate: 150}}</p>
+					{% endif %}
+					{% if podcast.date_released %}
+					<small class="italic opacity-75">Posted on - {{podcast.date_released | date: "%b %d, %Y" }}</small>
+					{% endif %}
+				</div>
+				{% endfor %}
+			</div>
+			<div class="text-center bg-slate-700 shadow-inner w-full"><a href="{{site.url}}/blog/"
+					class="no-underline">View all</a>
+			</div>
+		</div>
+	</div>
+</section>

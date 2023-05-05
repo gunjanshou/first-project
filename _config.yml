@@ -1,0 +1,116 @@
+lang: en
+# EDIT THE VARIABLES ACCORDINGLY
+title: Your Name
+email: mail@your.email
+description: >-
+  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero non nulla est omnis recusandae. Consequuntur asperiores fuga aliquid maiores. Quidem!
+baseurl: ""
+url: ""
+
+about_me: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, adipisci eligendi cum nobis voluptatum delectus consectetur quisquam? Sit perferendis dicta tempore asperiores ex natus? Aperiam, odit rerum?"
+                
+podcast_title: "Hatchedland Spoils a Movie"
+podcast_description: "This podcast is here to take you deep into the depth some compelling stories, acting, direction, musical score, and other aspects of cinematography and what makes them stand out."
+podcast_banner: "https://i.postimg.cc/RhSCnp4h/podcast-cover.png"
+podcast_rss: "https://feed.podbean.com/rajanydv/feed.xml"
+
+blog_title: "Your Blog"
+blog_description: "A description for your blog"
+
+# list your skillSets in the following category
+toolkit:
+  designing:
+    - Figma
+  frontend:
+    - TailwindCSS
+    - VanillaJS
+    - Jekyll
+    - React
+    - NextJS
+    - ReactNative
+  backend:
+    - Django
+    - Supabase
+    - MySQL
+    - PostgreSQL
+    - Cloudflare
+
+
+# socials
+twitter_username: 
+github_username:  hatchedland
+trakt_tv_username: 
+lastfm_username: 
+linkedin_username: 
+instagram_username: 
+podbean_userid: 
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# website tabs
+collections:
+  podcasts:
+    output: true
+  blog:
+    output: true
+  tags:
+    output: true
+    permalink: /blog/tags/:path/
+  projects:
+    output: true
+
+
+# tag_page_layout: tag_page
+# tag_page_dir: tag
+
+defaults:
+  - scope:
+      path: ''
+      type: blog
+    values:
+      layout: post
+      comments: true
+      toc: true
+      permalink: /post/:title/
+  - scope:
+      path: ''
+      type: projects
+    values:
+      # layout: projects
+      comments: true   
+      toc: true 
+      # permalink: /projects/:title/
+  - scope:
+      path: ''
+      type: podcasts
+    values:
+      layout: podcast
+      comments: true   
+      toc: true 
+      permalink: /podcast/:title/
+
+# Build settings
+theme: nuboard-theme
+plugins:
+  - jekyll-feed
+  - jekyll-archives
+  - jekyll-seo-tag
+  # - jekyll/tagging
+  # - jekyll-postcss
+
+# postcss:
+#   cache: false
+
+# code syntax highlighter
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: true
+  syntax_highlighter: rouge
+
+# Comments
+disqus-username: disqus_TNJRzbsQPX

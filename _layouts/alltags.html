@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<div class="all-tags">
+  <h1 class="text-5xl text-center" id="page-title">All Tags</h1>
+  <ul class="my-5">
+    {% assign tags = site.blog | all_tags %}
+    {% for tag in site.tags %}
+      {% assign tag_slug = tag['name'] | slugify: "raw" | remove: ".md" %}
+      <li class="px-4 py-1 border border-slate-500">
+        <a class="flex gap-2 items-center  tag-link text-2xl text-blue-300 hover:underline py-1" href={{ site.baseurl | append: "/blog/tags/" | append: tag_slug | append: "/" }} rel="category tag">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-8 h-8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"></path>
+          </svg>
+          <div>
+            {{ tag_slug }}
+          </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
